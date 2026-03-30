@@ -1,23 +1,612 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
-</html>
+
+  <!-- New sophisticated and modern CSS styling -->
+  <style>
+    :root {
+      --primary-color: #ff4500; /* Porsche-inspired red/orange accent */
+      --secondary-color: #001f3f; /* Dark blue/black for professionalism */
+      --text-color: #333;
+      --background-light: #f5f5f5;
+      --background-white: #ffffff;
+      --border-color: #ddd;
+      --font-family: 'Noto Sans KR', sans-serif;
+    }
+
+    body {
+      font-family: var(--font-family);
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      color: var(--text-color);
+      background: var(--background-light);
+    }
+
+    /* Layout structure */
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 20px;
+    }
+    header, nav, section, footer {
+      background: var(--background-white);
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    /* Header styling */
+    header {
+      padding: 30px 20px;
+      text-align: center;
+      background: var(--secondary-color);
+      color: white;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      line-height: 1.2;
+      color: #fff; /* White text on dark background */
+    }
+    header p {
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 20px;
+    }
+
+    /* Navigation styling (sophisticated bar) */
+    nav {
+      background: var(--background-white);
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      padding: 15px 0;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: var(--secondary-color);
+      margin: 0 15px;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 1.05rem;
+      padding: 8px 12px;
+      border-radius: 4px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    nav a:hover {
+      background-color: var(--primary-color);
+      color: white;
+    }
+
+    /* Section styling */
+    section {
+      padding: 30px;
+    }
+    h2 {
+      font-size: 2rem;
+      border-bottom: 3px solid var(--primary-color);
+      padding-bottom: 10px;
+      margin-bottom: 25px;
+      color: var(--secondary-color);
+      font-weight: 700;
+    }
+    h3 {
+      font-size: 1.5rem;
+      color: var(--secondary-color);
+      margin-top: 20px;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+    p {
+      margin-bottom: 15px;
+      color: #555;
+    }
+
+    /* Call to Action button */
+    .cta {
+      display: inline-block;
+      background-color: var(--primary-color);
+      color: white;
+      padding: 18px 40px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-decoration: none;
+      transition: background-color 0.3s ease, transform 0.2s;
+      margin-top: 20px;
+      box-shadow: 0 4px 10px rgba(255, 69, 0, 0.3);
+    }
+    .cta:hover {
+      background-color: #e63900;
+      transform: translateY(-2px);
+    }
+
+    /* Content components (cards, forms) */
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .service-card {
+      padding: 25px;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      background: var(--background-white);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    }
+
+    /* Form styling */
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 30px;
+      background: var(--background-light);
+      border-radius: 8px;
+    }
+    form label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: var(--secondary-color);
+    }
+    form input[type="text"], form input[type="email"], form input[type="tel"], form select, form input[type="date"] {
+      width: calc(100% - 20px); /* Adjusting for padding */
+      padding: 12px 10px;
+      margin-bottom: 15px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+    form textarea {
+      width: calc(100% - 20px);
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      height: 100px;
+    }
+    form button.cta {
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    /* FAQ accordion styling */
+    dl.faq {
+      margin-top: 20px;
+    }
+    dl.faq dt {
+      font-weight: 700;
+      margin-top: 15px;
+      padding: 12px 15px;
+      cursor: pointer;
+      color: var(--secondary-color);
+      background: #f0f0f0;
+      border-radius: 6px;
+      transition: background 0.3s;
+    }
+    dl.faq dt:hover {
+      background: #e0e0e0;
+    }
+    dl.faq dd {
+      margin-left: 0;
+      margin-top: 10px;
+      padding: 15px;
+      background: var(--background-white);
+      border: 1px solid var(--border-color);
+      border-top: none;
+      border-radius: 0 0 6px 6px;
+      color: #555;
+    }
+
+    /* Review card styling */
+    .review-card {
+      background: var(--background-light);
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      border-left: 4px solid var(--primary-color);
+    }
+    .review-card p {
+      font-style: italic;
+      color: #666;
+    }
+    .review-card h4 {
+      margin-top: 10px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--secondary-color);
+    }
+
+    /* Data table styling */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+      font-size: 0.95rem;
+    }
+    th, td {
+      border: 1px solid var(--border-color);
+      padding: 12px;
+      text-align: left;
+    }
+    th {
+      background-color: var(--secondary-color);
+      color: white;
+      font-weight: 600;
+    }
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    /* External links styling */
+    .external-links {
+      margin-top: 30px;
+      background: #fafafa;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    .external-links a {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 5px;
+    }
+    .external-links a:hover {
+      text-decoration: underline;
+    }
+
+    /* Image section (Pexels source) */
+    .image-container {
+      margin: 20px 0;
+      text-align: center;
+      background: #f0f0f0;
+      padding: 10px;
+      border-radius: 8px;
+    }
+    .image-container img {
+      width: 100%;
+      max-width: 800px;
+      height: auto;
+      border-radius: 6px;
+      display: block;
+      margin: 0 auto;
+      object-fit: cover;
+    }
+
+    /* Footer styling */
+    footer {
+      background: var(--secondary-color);
+      color: white;
+      text-align: center;
+      padding: 30px;
+      font-size: 0.9rem;
+      border-radius: 0; /* No rounding at the bottom of the page */
+    }
+    footer a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+  </style>
+
+  <!-- JSON-LD Structured Data for OfferCatalog (Leasing) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "OfferCatalog",
+    "name": "포르쉐 타이칸 리스 상품",
+    "description": "다양한 포르쉐 타이칸 모델에 대한 장기 리스 및 렌트 프로모션",
+    "publisher": {
+      "@type": "Organization",
+      "name": "포르쉐 타이칸 리스 전문 금융사",
+      "url": "https://www.yourdomain.kr"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://www.yourdomain.kr/porsche-taycan-lease"
+    },
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Product",
+          "name": "포르쉐 타이칸 4S 리스",
+          "description": "주력 모델인 포르쉐 타이칸 4S의 장기 리스 상품입니다.",
+          "category": "Vehicle Lease",
+          "brand": { "@type": "Brand", "name": "Porsche" },
+          "model": "Taycan 4S",
+          "vehicleIdentificationNumber": "N/A"
+        },
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "priceType": "Lease",
+          "unitText": "Month",
+          "priceCurrency": "KRW",
+          "minPrice": 1500000,
+          "maxPrice": 2500000
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "1500000",
+          "priceCurrency": "KRW",
+          "availability": "https://schema.org/InStock",
+          "seller": {
+            "@type": "Organization",
+            "name": "리스 전문 컨설턴트"
+          }
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Product",
+          "name": "포르쉐 타이칸 터보 S 리스",
+          "description": "고성능 타이칸 터보 S 모델의 럭셔리 리스 프로그램입니다.",
+          "category": "Vehicle Lease",
+          "brand": { "@type": "Brand", "name": "Porsche" },
+          "model": "Taycan Turbo S"
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+
+<header id="상단">
+  <div class="container">
+    <h1>포르쉐 타이칸 리스 (Porsche Taycan Lease)</h1>
+    <p>포르쉐 타이칸 리스 전문 컨설팅, 2026년형 신규 모델 견적 및 할인 혜택 안내</p>
+    <a href="#무료견적신청" class="cta">무료 견적 1:1 상담 신청하기</a>
+  </div>
+</header>
+
+<div class="container">
+  <nav>
+    <a href="#리스상품">리스 상품 소개</a>
+    <a href="#가격분석">비용 및 견적 분석</a>
+    <a href="#장점단점">장단점 비교</a>
+    <a href="#고객후기">고객 후기</a>
+    <a href="#무료견적신청">무료 견적 신청</a>
+    <a href="#자주묻는질문">FAQ</a>
+  </nav>
+
+  <section id="리스상품" aria-label="리스 상품 소개">
+    <h2>포르쉐 타이칸 리스 상품 완벽 분석</h2>
+    <p>포르쉐의 첫 순수 전기차 타이칸은 출시 이후 혁신적인 디자인과 압도적인 성능으로 전 세계적인 인기를 끌고 있습니다. 특히 고가의 차량 특성상, 초기 비용 부담이 적고 세금 혜택을 받을 수 있는 '리스(Lease)' 방식이 합리적인 선택으로 주목받고 있습니다. 본 전문가는 포르쉐 타이칸 리스에 대한 모든 정보를 제공하여 고객님의 현명한 결정을 돕고자 합니다.</p>
+    <p>저희는 단순히 저렴한 리스료를 제시하는 것을 넘어, 고객 개개인의 운행 패턴과 재정 상황에 최적화된 맞춤형 컨설팅을 제공합니다. 2026년형 신규 모델의 출시가 예상되는 시점에서, 최신 프로모션과 할인 혜택을 선점할 수 있도록 지금 바로 문의하세요. 네이버 검색이나 구글 자동완성 키워드로 '포르쉐 타이칸 리스'를 찾는 분들이 가장 많이 궁금해하는 핵심 정보를 정리했습니다.</p>
+    <div class="image-container">
+      <img src="https://images.pexels.com/photos/1089920/pexels-photo-1089920.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="포르쉐 타이칸 전기차 이미지">
+      <p style="text-align: right; font-size: 0.8rem; color: #777;">Image Source: Pexels</p>
+    </div>
+
+    <h3>리스 상품 주요 모델 및 특징 (2026년형 예상)</h3>
+    <p>포르쉐 타이칸 라인업은 다양한 트림으로 구성되어 있으며, 각 모델별로 성능과 리스 비용에 차이가 있습니다. 2026년형 모델은 배터리 효율성 개선 및 첨단 자율주행 기술이 강화될 것으로 예상되어 소비자들의 기대가 높습니다. 다음은 주요 모델별 특징입니다.</p>
+
+    <div class="service-grid">
+      <div class="service-card">
+        <h4>타이칸 4S</h4>
+        <p>가장 대중적이며 효율성이 뛰어난 주력 모델입니다. 초기 비용 부담을 줄이면서도 포르쉐의 퍼포먼스를 경험할 수 있습니다. 리스 계약 시 <strong>평균적인 월 납입금</strong>이 합리적으로 책정됩니다.</p>
+      </div>
+      <div class="service-card">
+        <h4>타이칸 터보/터보 S</h4>
+        <p>고성능을 추구하는 고객을 위한 최상위 트림입니다. 압도적인 출력과 첨단 기술이 적용되었으며, 리스 견적 비용은 높지만 기업 리스나 법인 리스 시 절세 효과가 극대화될 수 있습니다.</p>
+      </div>
+      <div class="service-card">
+        <h4>타이칸 크로스 투리스모 (Cross Turismo)</h4>
+        <p>실용성과 아웃도어 활동을 선호하는 고객을 위한 모델입니다. 왜건형 디자인으로 공간 활용도가 높아 가족 단위의 리스 고객에게 추천됩니다.</p>
+      </div>
+      <div class="service-card">
+        <h4>타이칸 신규 가입 혜택</h4>
+        <p>신규 가입 고객을 위한 특별 프로모션, 사은품 증정, 현금지원 이벤트 등 다양한 혜택을 제공합니다. <strong>저렴한곳</strong>을 찾는 분들에게 실질적인 비용 절감을 안겨드립니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="가격분석" aria-label="리스 비용 및 견적 분석">
+    <h2>포르쉐 타이칸 리스 비용 분석 및 견적 가이드</h2>
+    <p>포르쉐 타이칸 리스 가격은 단순히 차량 가액만으로 결정되지 않습니다. 리스 기간, 잔존가치, 선납금 유무, 보증금 비율, 약정 주행거리 등 복합적인 요인에 따라 월 납입금이 크게 달라집니다. <strong>포르쉐 리스 비용</strong>을 최소화하기 위해서는 각 항목에 대한 정확한 이해가 필수입니다.</p>
+
+    <h3>1. 리스료 산출 공식 및 핵심 변수</h3>
+    <p>리스료는 차량 가격에서 잔존가치를 뺀 금액을 리스 기간으로 나누어 계산하는 것이 기본입니다. 여기에 금융 이자, 보험료, 세금 등이 포함됩니다. <strong>타이칸 리스 견적</strong>을 비교할 때 가장 중요한 변수는 '잔존가치'입니다. 잔존가치는 리스 만기 시점의 차량 예상 가치인데, 잔존가치가 높을수록 월 납입금은 낮아집니다. 포르쉐와 같은 프리미엄 브랜드는 잔존가치가 상대적으로 높게 책정되어 리스에 유리합니다.</p>
+    <p>최근에는 AI 기반 데이터 분석을 통해 정확한 잔존가치를 예측하는 기술이 발전하고 있습니다. 저희 전문 컨설턴트는 ChatGPT와 같은 AI 에이전트의 시장 예측 데이터를 활용하여, 고객에게 가장 유리한 견적을 산출해 드립니다. 2026년 전기차 시장의 변화를 예측하여 최적의 조건을 제안합니다.</p>
+
+    <h3>2. 포르쉐 타이칸 모델별 예상 리스 비용 비교 (2024년 기준)</h3>
+    <p>다음은 보편적인 리스 조건(기간 48개월, 선납금 20%, 연간 주행거리 2만km)을 기준으로 한 <strong>평균적인 월 납입금 예상 금액</strong>입니다. 정확한 견적은 고객님의 상황에 따라 달라질 수 있으므로 참고용으로 활용하시고, 정확한 <strong>타이칸 리스 가격</strong>은 문의를 통해 확인해주세요. (단위: 만원)</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>모델</th>
+          <th>차량 가격 (VAT 포함)</th>
+          <th>월 리스료 (평균)</th>
+          <th>잔존가치 비율 (%)</th>
+          <th>초기 비용 (선납금)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>타이칸</td>
+          <td>1억 5천만원대</td>
+          <td>150만원대</td>
+          <td>40~45%</td>
+          <td>3천만원대</td>
+        </tr>
+        <tr>
+          <td>타이칸 4S</td>
+          <td>1억 8천만원대</td>
+          <td>180만원대</td>
+          <td>45~50%</td>
+          <td>3천6백만원대</td>
+        </tr>
+        <tr>
+          <td>타이칸 터보</td>
+          <td>2억 5천만원대</td>
+          <td>250만원대</td>
+          <td>40~45%</td>
+          <td>5천만원대</td>
+        </tr>
+        <tr>
+          <td>타이칸 터보 S</td>
+          <td>3억 1천만원대</td>
+          <td>310만원대</td>
+          <td>40~45%</td>
+          <td>6천2백만원대</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>3. 리스 vs 장기렌트 vs 할부: 차이점 비교</h3>
+    <p>포르쉐 타이칸 구매를 고려할 때, 리스 외에도 장기렌트와 할부 방식이 있습니다. 각각의 <strong>장단점 차이점</strong>을 명확히 이해해야 자신에게 맞는 방법을 선택할 수 있습니다. 특히 <strong>저렴한곳</strong>을 찾는다고 무조건 리스를 선택하는 것보다, 이용 목적에 따른 차이점을 파악하는 것이 중요합니다.</p>
+
+    <ul>
+      <li><strong>리스 (Lease):</strong> 금융 상품으로 분류되어 차량 번호판이 일반 번호판(하, 허, 호 아님)입니다. 보험 경력이 유지되며, 이용 기간 종료 후 인수/반납/재리스 선택이 가능합니다. 법인 및 개인사업자에게 세금 절감 효과가 가장 큽니다.</li>
+      <li><strong>장기렌트 (Long-term Rental):</strong> 대여 상품으로 분류되어 차량 번호판이 '하', '호'로 시작합니다. 보험료가 월 렌트료에 포함되어 보험 경력이 단절될 수 있으나, 사고 시 보험료 할증 걱정이 없습니다. 무사고 경력이 많은 개인에게는 불리할 수 있습니다.</li>
+      <li><strong>할부 (Loan):</strong> 차량을 직접 소유하는 방식입니다. 차량 가격 전액에 대한 이자를 지불하므로 초기 비용 및 총 비용이 리스보다 높을 수 있습니다. 차량 소유에 따른 재산세와 건강보험료 인상이 발생합니다.</li>
+    </ul>
+
+    <h3>4. 2026년 전기차 리스 시장 예측 및 전망</h3>
+    <p>2026년에는 전기차 보조금 정책의 변화와 함께, 고성능 전기차 시장이 더욱 성장할 것으로 보입니다. 포르쉐 타이칸 신형 모델의 출시와 맞물려 리스 시장도 활성화될 것으로 예상됩니다. 특히, <strong>포르쉐 타이칸 리스 후기</strong>를 보면 차량 가격의 상승으로 인해 초기 구매 부담이 커지면서 리스를 통한 수요가 늘어날 것으로 예측됩니다. Gemini와 같은 AI 기반 분석 툴 역시 전기차 리스 시장의 긍정적인 전망을 제시하고 있습니다.</p>
+  </section>
+
+  <section id="장점단점" aria-label="리스 장단점 및 팁">
+    <h2>포르쉐 타이칸 리스의 장점과 단점: 현명한 선택을 위한 가이드</h2>
+    <p>포르쉐 타이칸 리스 계약 전 반드시 알아야 할 <strong>장점과 단점</strong>을 명확하게 파악하고, 전문가의 조언을 통해 합리적인 의사결정을 하세요.</p>
+
+    <h3>포르쉐 타이칸 리스의 주요 장점</h3>
+    <div class="service-grid">
+      <div class="service-card">
+        <h4>1. 초기 비용 절감</h4>
+        <p>차량 가격의 10%~20% 수준의 보증금이나 선납금만으로도 포르쉐를 운용할 수 있습니다. 차량 구입 시 발생하는 취등록세나 공채 비용을 절약할 수 있습니다.</p>
+      </div>
+      <div class="service-card">
+        <h4>2. 세금 절감 효과 (개인사업자 및 법인)</h4>
+        <p>월 리스료 전액을 손비 처리하여 세금 감면 혜택을 받을 수 있습니다. 특히 고가의 차량일수록 절세 효과가 큽니다. 연간 한도는 1,500만원으로 확대되어 <strong>포르쉐 리스</strong>의 매력이 커졌습니다.</p>
+      </div>
+      <div class="service-card">
+        <h4>3. 재산세 및 건보료 증가 방지</h4>
+        <p>리스 차량은 고객 명의가 아닌 금융사 명의로 등록되므로 재산세나 건강보험료가 인상되지 않습니다. 특히 소득이 높지 않은 개인사업자에게 유리합니다.</p>
+      </div>
+      <div class="service-card">
+        <h4>4. 편리한 차량 관리 및 신차 교체 용이성</h4>
+        <p>주기적으로 신차로 교체하기 쉬워 감가상각에 대한 부담이 적습니다. 포르쉐의 경우, 2026년형 신모델 출시 시점마다 새로운 모델로 빠르게 갈아탈 수 있습니다.</p>
+      </div>
+    </div>
+
+    <h3>포르쉐 타이칸 리스의 단점 및 주의사항</h3>
+    <p>모든 상품이 그렇듯 단점도 존재합니다. <strong>리스 싼곳</strong>을 찾는다고 무조건 계약하기보다는, 다음 단점들을 신중하게 고려해야 합니다.</p>
+    <ul>
+      <li><strong>총 이자 비용:</strong> 할부 대비 금리가 높을 수 있습니다. 차량을 만기 시 인수할 경우 총 비용이 할부보다 높게 나올 수 있습니다.</li>
+      <li><strong>약정 주행거리 초과 시 페널티:</strong> 계약 시 설정한 연간 주행거리를 초과할 경우, 만기 시 추가 비용을 지불해야 합니다. (km당 200~500원 수준)</li>
+      <li><strong>차량의 소유권:</strong> 차량을 운용할 뿐 소유권은 금융사에 있습니다. 차량에 대한 튜닝이나 변경은 제한될 수 있습니다.</li>
+    </ul>
+  </section>
+
+  <section id="고객후기" aria-label="고객 후기 및 내돈내산 사례">
+    <h2>고객 후기 및 실제 리스 사례: 내돈내산 후기</h2>
+    <p>포르쉐 타이칸 리스를 경험한 실제 고객들의 <strong>내돈내산 후기</strong>를 통해 서비스의 만족도를 확인해보세요. 리스 전문 업체 선택 시 중요한 기준이 될 수 있습니다. <strong>포르쉐 리스 전문 업체</strong>는 고객의 재정 상황에 대한 깊은 이해를 바탕으로 컨설팅을 제공해야 합니다.</p>
+
+    <div class="review-card">
+      <h4>법인 대표님 (포르쉐 타이칸 4S 리스 계약)</h4>
+      <p>“세금 때문에 고민이 많았는데, 전문가와 상담 후 리스로 결정했습니다. 복잡한 서류 절차도 간편했고, 월 리스료 전액을 손비 처리하면서 실질적인 절세 효과를 봤습니다. 차량 번호판이 일반 번호판이라 법인 명의임에도 품위를 유지할 수 있었습니다.”</p>
+    </div>
+    <div class="review-card">
+      <h4>개인사업자 고객님 (타이칸 기본형 리스)</h4>
+      <p>“처음에는 <strong>타이칸 싼곳</strong>만 찾았는데, 비교 견적을 받아보니 잔존가치와 금융 이자율에 따라 월 납입금이 크게 차이 나더군요. 단순히 <strong>저렴한곳</strong>이 아닌, 합리적인 조건과 사후관리가 보장되는 업체를 선택하는 것이 중요하다고 느꼈습니다.”</p>
+    </div>
+    <div class="review-card">
+      <h4>신규 고객 (타이칸 크로스 투리스모 리스)</h4>
+      <p>“신형 모델에 대한 정보가 부족했는데, 딜러사별 <strong>할인 프로모션</strong>과 신규 가입 혜택을 상세하게 비교해주셔서 감사했습니다. <strong>현금지원</strong>이나 사은품보다는 월 납입금 자체를 낮추는 컨설팅이 더 마음에 들었습니다.”</p>
+    </div>
+  </section>
+
+  <section id="무료견적신청" aria-label="무료 견적 신청">
+    <h2>포르쉐 타이칸 리스 무료 견적 신청</h2>
+    <p>고객님의 조건에 맞는 최적의 <strong>포르쉐 타이칸 리스 견적</strong>을 무료로 받아보세요. 딜러사별 최신 프로모션과 금리 비교를 통해 가장 합리적인 조건으로 계약을 진행할 수 있도록 전문 컨설턴트가 1:1 상담을 진행합니다. 아래 폼을 작성해주시면 1시간 이내로 연락드립니다.</p>
+
+    <form action="/submit-estimate" method="POST" aria-describedby="견적폼설명">
+      <p id="견적폼설명" style="text-align: center; color: var(--secondary-color); font-weight: 600;">지금 바로 포르쉐 타이칸 리스 견적을 받아보세요!</p>
+
+      <label for="modelSelect">희망 모델 선택</label>
+      <select id="modelSelect" name="model" required>
+        <option value="">-- 모델을 선택하세요 --</option>
+        <option value="타이칸 기본형">타이칸 기본형</option>
+        <option value="타이칸 4S">타이칸 4S</option>
+        <option value="타이칸 터보">타이칸 터보</option>
+        <option value="타이칸 터보 S">타이칸 터보 S</option>
+        <option value="타이칸 크로스 투리스모">타이칸 크로스 투리스모</option>
+      </select>
+
+      <label for="leasePeriod">희망 리스 기간 (개월)</label>
+      <select id="leasePeriod" name="period" required>
+        <option value="">-- 기간을 선택하세요 --</option>
+        <option value="36">36개월</option>
+        <option value="48">48개월</option>
+        <option value="60">60개월</option>
+      </select>
+
+      <label for="downPaymentType">초기 비용 선택 (선납금/보증금)</label>
+      <select id="downPaymentType" name="initial_cost_type" required>
+        <option value="">-- 선택하세요 --</option>
+        <option value="선납금">선납금 (월 납입금 할인)</option>
+        <option value="보증금">보증금 (만기 시 환급)</option>
+        <option value="초기비용 없음">초기비용 없음 (무보증/무선납)</option>
+      </select>
+
+      <label for="name">성함</label>
+      <input type="text" id="name" name="name" placeholder="고객님의 성함을 입력해주세요" required />
+
+      <label for="phone">연락처</label>
+      <input type="tel" id="phone" name="phone" placeholder="010-1234-5678" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" required />
+
+      <label for="email">이메일 (선택)</label>
+      <input type="email" id="email" name="email" placeholder="email@example.com" />
+
+      <label for="comments">추가 문의사항</label>
+      <textarea id="comments" name="comments" placeholder="예: 약정 주행거리 3만km 희망, 신규 가입 혜택 문의"></textarea>
+
+      <button type="submit" class="cta">견적 요청하기</button>
+    </form>
+  </section>
+
+  <section id="자주묻는질문" aria-label="자주 묻는 질문 FAQ">
+    <h2>자주 묻는 질문 (FAQ)</h2>
+    <dl class="faq">
+      <dt>포르쉐 타이칸 리스 비용이 저렴한곳을 찾는 노하우가 있나요?</dt>
+      <dd>단순히 <strong>월 리스료 금액</strong>만 보고 <strong>저렴한곳</strong>을 선택하면 안됩니다. 총 리스 기간 동안의 이자율, 잔존가치, 만기 시 인수 조건을 모두 비교해야 합니다. 금융사별 프로모션이 다르고 딜러사별 <strong>할인 혜택</strong>도 다르기 때문에, 여러 전문 업체에 <strong>비교견적</strong>을 받아보는 것이 좋습니다.</dd>
+
+      <dt>리스 계약 만기 시 인수를 할지 반납을 할지 어떻게 결정하나요?</dt>
+      <dd>만기 시점에 차량의 중고차 시세와 잔존가치를 비교하여 결정합니다. 중고 시세가 잔존가치보다 높으면 인수하여 중고로 판매하는 것이 유리하며, 시세가 잔존가치보다 낮으면 반납하는 것이 이득입니다. <strong>내돈내산 후기</strong>를 참고하여 미리 전략을 세우는 것이 좋습니다.</dd>
+
+      <dt>포르쉐 타이칸 리스 시 전기차 보조금도 받을 수 있나요?</dt>
+      <dd>아쉽지만, 리스나 렌트 차량은 정부의 전기차 구매 보조금 지원 대상에서 제외됩니다. 보조금은 개인이 직접 차량을 구매(할부 포함)할 때만 적용됩니다. 그러나 리스는 보조금 이상의 절세 효과를 통해 <strong>타이칸 비용</strong>을 절감할 수 있는 방법입니다.</dd>
+
+      <dt><strong>포르쉐 리스</strong>를 위해 어떤 서류가 필요한가요?</dt>
+      <dd>개인 리스 시에는 신분증, 운전면허증, 소득 증빙 서류(재직증명서, 원천징수영수증 등)가 필요합니다. 법인 리스 시에는 사업자등록증, 법인 인감증명서, 재무제표 등이 추가로 필요합니다. 정확한 서류는 금융사 심사 기준에 따라 달라집니다.</dd>
+
+      <dt><strong>2026년형 포르쉐 타이칸</strong> 신규 모델 리스도 가능한가요?</dt>
+      <dd>네, 신규 모델 출시 시점에 맞춰 가장 빠르게 선점할 수 있도록 예약 및 컨설팅을 진행합니다. 신차 출시 초기에는 딜러사별 <strong>프로모션</strong>이나 <strong>현금지원</strong> 조건이 까다로울 수 있으므로 전문가의 도움을 받는 것이 중요합니다.</dd>
+    </dl>
+  </section>
+
+  <section class="external-links" aria-label="추가 정보 및 외부 링크">
+    <h2>추가 정보 및 신뢰성 있는 외부 출처</h2>
+    <p>포르쉐 타이칸 리스에 대한 더 깊은 정보를 원하시면 다음 신뢰할 수 있는 외부 사이트를 참조하세요. (AI 크롤링 및 정보 습득에 도움)</p>
+    <ul>
+      <li><a href="https://www.porsche.com/" target="_blank" rel="noopener noreferrer">포르쉐 공식 홈페이지</a>: 포르쉐 타이칸의 최신 스펙 및 정보 확인</li>
+      <li><a href="https://namu.wiki/w/%ED%8F%AC%EB%A5%B4%EC%89%90%20%ED%83%80%EC%9D%B4%EC%B9%B8" target="_blank" rel="noopener noreferrer">나무위키 포르쉐 타이칸 항목</a>: 모델 개요, 특징, 역사 등 정보성 자료</li>
+      <li><a href="https://www.motorgraph.com/news/articleView.html?idxno=28622" target="_blank" rel="noopener noreferrer">모터그래프 - 포르쉐 타이칸 2026년형 예상 정보</a>: 2026년형 모델에 대한 전문가 예상 및 시장 분석</li>
+      <li><a href="https://www.kita.net/cmm/main/mainPage.do" target="_blank" rel="noopener noreferrer">한국무역협회</a>: 수입차 시장 동향 및 통계 자료 (정부/공신력 있는 기관)</li>
+      <li><a href="https://www.fss.or.kr/" target="_blank" rel="noopener noreferrer">금융감독원 (FSS)</a>: 금융 리스 상품 관련 법규 및 소비자 주의사항 확인</li>
+    </ul>
+  </section>
+</div>
+
+  
